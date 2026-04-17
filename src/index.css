@@ -1,0 +1,109 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Space+Grotesk:wght@500;700&family=Noto+Kufi+Arabic:wght@400;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* NEXUS.COMP — Neon Obsidian Arena design system. All colors are HSL. */
+@layer base {
+  :root {
+    /* Surfaces */
+    --background: 240 10% 1.5%;          /* obsidian #030304 */
+    --surface: 240 8% 4%;                /* #0a0a0c */
+    --foreground: 0 0% 100%;
+    --muted: 240 8% 8%;
+    --muted-foreground: 220 6% 57%;      /* #8a8f98 */
+
+    --card: 240 8% 4%;
+    --card-foreground: 0 0% 100%;
+
+    --popover: 240 10% 3%;
+    --popover-foreground: 0 0% 100%;
+
+    /* Brand neon */
+    --primary: 187 100% 50%;             /* #00f0ff cyan */
+    --primary-foreground: 240 10% 1.5%;
+    --primary-glow: 187 100% 60%;
+
+    --secondary: 240 6% 10%;
+    --secondary-foreground: 0 0% 100%;
+
+    --accent: 187 100% 50%;
+    --accent-foreground: 240 10% 1.5%;
+
+    --destructive: 0 84% 55%;
+    --destructive-foreground: 0 0% 100%;
+
+    --border: 0 0% 100% / 0.06;          /* mostly used as divider */
+    --input: 240 6% 10%;
+    --ring: 187 100% 50%;
+
+    --radius: 0.25rem;
+
+    /* Gradients & shadows */
+    --gradient-glow: radial-gradient(ellipse at top, hsl(187 100% 50% / 0.10), transparent 70%);
+    --gradient-row: linear-gradient(to right, hsl(187 100% 50% / 0.12), transparent);
+    --shadow-neon: 0 0 15px hsl(187 100% 50% / 0.45);
+    --shadow-elevated: 0 20px 60px -10px hsl(0 0% 0% / 0.6);
+
+    /* Sidebar (kept for shadcn parity) */
+    --sidebar-background: 240 10% 2%;
+    --sidebar-foreground: 0 0% 100%;
+    --sidebar-primary: 187 100% 50%;
+    --sidebar-primary-foreground: 240 10% 1.5%;
+    --sidebar-accent: 240 6% 10%;
+    --sidebar-accent-foreground: 0 0% 100%;
+    --sidebar-border: 240 6% 14%;
+    --sidebar-ring: 187 100% 50%;
+  }
+}
+
+@layer base {
+  * {
+    border-color: hsl(255 255 255 / 0.06);
+  }
+
+  html {
+    background: hsl(var(--background));
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-family: 'Inter', system-ui, sans-serif;
+    background-image:
+      radial-gradient(ellipse 800px 400px at 50% 0%, hsl(var(--primary) / 0.08), transparent 70%);
+    background-attachment: fixed;
+  }
+
+  /* Kurdish (RTL) — switch to Noto Kufi Arabic */
+  html.font-kurdish body,
+  html.font-kurdish .font-display,
+  html.font-kurdish .font-mono {
+    font-family: 'Noto Kufi Arabic', 'Inter', sans-serif;
+  }
+
+  ::selection {
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+  }
+}
+
+@layer components {
+  .font-display { font-family: 'Space Grotesk', sans-serif; }
+  .font-mono-ui { font-family: 'JetBrains Mono', monospace; }
+
+  .glow-text {
+    text-shadow: 0 0 30px hsl(0 0% 100% / 0.1);
+  }
+
+  .neon-edge {
+    background: linear-gradient(to right, transparent, hsl(var(--primary)), transparent);
+    box-shadow: var(--shadow-neon);
+  }
+
+  .surface-card {
+    background: hsl(0 0% 100% / 0.02);
+    border: 1px solid hsl(0 0% 100% / 0.06);
+    backdrop-filter: blur(20px);
+  }
+}
